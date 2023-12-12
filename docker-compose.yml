@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: sql_practice_by_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./scripts/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
